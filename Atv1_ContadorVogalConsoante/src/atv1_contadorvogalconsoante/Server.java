@@ -19,13 +19,8 @@ public class Server {
             Socket soc = srv.accept();
             Scanner readClient = new Scanner(soc.getInputStream());
             String text = readClient.nextLine();
-            PrintWriter escrita = new PrintWriter(soc.getOutputStream(), true);
-            escrita.println(vowelsConsonantsCounter(text));
+            PrintWriter escrita = new PrintWriter(soc.getOutputStream(), true); 
+            escrita.println(CharacterCounter.Count(text));
         }
-    }
-    
-    private static String vowelsConsonantsCounter(String text){
-        return ("Numero de vogais: " + (text.length() - text.replaceAll("a|e|i|o|u", "").length())+
-                    " ; Numero de consoantes: " +text.replaceAll("a|e|i|o|u", "").length());
     }
 }
