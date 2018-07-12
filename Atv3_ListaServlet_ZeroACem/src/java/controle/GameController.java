@@ -49,6 +49,7 @@ public class GameController extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>" + gameManager.chute(numeroChutado) + "</h1>");
+            out.println("<h2>" + gameManager.numeroTentativas() + "</h2>");
             out.println("<form action=\"GameController\" method=\"POST\"></br>\n" +
                 "<input type=\"text\" name=\"numeroChutado\"/><br>\n" +
                 "<input type=\"submit\" value=\"Jogar\" name=\"bt1\"/></form>");
