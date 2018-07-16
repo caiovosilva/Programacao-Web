@@ -44,3 +44,5 @@ target/
 # End of https://www.gitignore.io/api/java,java-web
 /Atv4_VariacaoContaLetras/nbproject/private/
 /Atv4_VariacaoContaLetras/build/
+/Atv5_QuadradoMagico/nbproject/private/
+/Atv5_QuadradoMagico/build/
