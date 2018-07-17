@@ -11,13 +11,10 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form action="ControleQuadradoMagico" method="POST">
+        <form action ="ControleQuadradoMagico" method="GET">
             <table align="center">
                 <tr>
-                    <td align="center"><input type="submit" name="bt" value="Novo Quadrado"/></td>
-                </tr>
-                <tr>
-                    <td><input type="text" name="a1" value="OMG"/></td>
+                    <td><input type="text" name="a1"/></td>
                     <td><input type="text" name="a2"/></td>
                     <td><input type="text" name="a3"/></td>
                 </tr>
@@ -32,13 +29,11 @@ and open the template in the editor.
                     <td><input type="text" name="c3"/></td>
                 </tr>
                 <tr>
-                    <td align="center"><input type="submit" name="bt" value="Verificar"/></td>
+                    <td><input type="submit" name="acao" value="Novo"></td>
+                    <td><input type="submit" name="acao" value="Jogar"></td>
+                    <td><input type="reset" name="acao" value="Limpar"></td>
                 </tr>
-                <tr>
-                    <td align="center"><input type="text" name="Resultado"/></td>
-                </tr>
-            </table><br><br>
-            <input type="text" name="resposta"/>
+            </table>
         </form>
     </body>
 </html>
