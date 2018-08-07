@@ -8,6 +8,8 @@ package DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,9 +27,13 @@ public class ConexaoDerby {
         return instancia;
     }
 
-    public Connection getConn() throws ClassNotFoundException, SQLException {
-        Class.forName("org.apache.derby.jdbc.ClientDriver");
-        conn=DriverManager.getConnection("jdbc:derby://localhost:1527/agenda","sa","123456");
+    public Connection getConn() {
+        try {
+            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            conn=DriverManager.getConnection("jdbc:derby://localhost:1527/Biblioteca","caio","1234");
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(ConexaoDerby.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return conn;
     }
     

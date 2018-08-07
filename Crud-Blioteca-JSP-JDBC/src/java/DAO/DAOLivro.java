@@ -15,6 +15,9 @@ import model.Livro;
 public interface DAOLivro {
     
     public String addLivro(Livro livro) ;
-    public List buscarLivros(Livro livro);
-    public Livro getLivro(int id);    
+    public List buscarLivrosByNome(Livro livro);
+    public List buscarTodosLivros();
+    public Livro getLivro(int id);
+    public String updateLivro(Livro livro);
+    public String deleteLivro(Livro livro);
 }

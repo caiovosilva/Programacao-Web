@@ -6,6 +6,7 @@
 package negocio;
 
 import DAO.DAOLivroDerby;
+import java.util.List;
 import model.Livro;
 
 /**
@@ -26,6 +27,22 @@ public class Biblioteca {
     
     public String addLivro(){
         return this.dao.addLivro(local);
+    }
+    
+    public String atualizarLivro(){
+        return this.dao.updateLivro(local);
+    }
+    
+    public String apagarLivro(){
+        return this.dao.deleteLivro(local);
+    }
+    
+    public List getLivros(){
+        return dao.buscarTodosLivros();
+    }
+    
+    public List getLivrosByNome(){
+        return dao.buscarLivrosByNome(local);
     }
     
     public int getId() {

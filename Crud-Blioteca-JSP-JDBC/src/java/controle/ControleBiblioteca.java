@@ -37,10 +37,14 @@ public class ControleBiblioteca extends HttpServlet {
             
             if(acao.equalsIgnoreCase("cadastrar")){
                 request.getRequestDispatcher("cadastro.jsp").forward(request, response);
-            }else  if(acao.equalsIgnoreCase("buscar")){
+            }else if(acao.equalsIgnoreCase("buscar")){
                 request.getRequestDispatcher("busca.jsp").forward(request, response);
-            }else  if(acao.equalsIgnoreCase("editar")){
+            }else if(acao.equalsIgnoreCase("editar")){
                 request.getRequestDispatcher("editar.jsp").forward(request, response);
+            }else if(acao.equalsIgnoreCase("atualizar")){
+                request.getRequestDispatcher("atualizar.jsp").forward(request, response);
+            }else if(acao.equalsIgnoreCase("apagar")){
+                request.getRequestDispatcher("apagar.jsp").forward(request, response);
             }
         }
     }
