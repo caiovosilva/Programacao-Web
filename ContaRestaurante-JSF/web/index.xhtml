@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form> 
+            <p:growl id="msgGrowl"  showDetail="true" sticky="false" />  
+
+            <p:panel header="Divisão de Conta">  
+                <h:panelGrid columns="2" cellpadding="5">  
+                    <p:outputLabel for="totalGasto" value="Peso:" />   
+                    <p:inputText id="totalGasto" value="#{contaBean.conta.total}" required="true" />
+                    <p:outputLabel for="qtdPessoas" value="Quantidade de pessoas:" />   
+                    <p:inputText id="qtdPessoas" value="#{contaBean.conta.setPessoas}" required="true" />
+                    <p:outputLabel for="gorjeta" value="Gorjeta:" />   
+                    <p:inputText id="gorjeta" value="#{contaBean.conta.setGorjeta}" required="true" />
+                </h:panelGrid>  
+                <h:panelGrid columns="3" cellpadding="5">
+                    <p:commandButton value="Calcular Conta" actionListener="#{contaBean.calculaIMCTradicional()}" update="msgGrowl" />
+                </h:panelGrid>
+            </p:panel> 
+        </h:form> 
+    </h:body>
+</html>
+
