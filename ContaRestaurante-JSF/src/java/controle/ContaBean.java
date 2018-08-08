@@ -6,8 +6,10 @@
 package controle;
 
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
-import java.io.Serializable;
+import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import negocio.Conta;
 
 /**
@@ -15,23 +17,25 @@ import negocio.Conta;
  * @author caiovosilva
  */
 @Named(value = "contaBean")
-@SessionScoped
-public class ContaBean implements Serializable {
+@RequestScoped
+public class ContaBean {
 
     /**
-     * Creates a new instance of contaBean
+     * Creates a new instance of ContaBean
      */
+    private Conta conta;
+    
     public ContaBean() {
         conta = new Conta();
     }
     
-    private Conta conta;
-
     public Conta getConta() {
         return conta;
     }
     
     public void calcularConta(){
-        
+        FacesContext context = FacesContext.getCurrentInstance();    
+        context.addMessage(null, new FacesMessage("Valor da Conta", getConta().getConta()));
     }
+    
 }

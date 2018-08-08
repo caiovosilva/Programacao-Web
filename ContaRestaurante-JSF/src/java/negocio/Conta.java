@@ -15,8 +15,19 @@ public class Conta {
    private int pessoas;
    private double gorjeta;
 
+    public double getTotal() {
+        return total;
+    }
+
+    public int getPessoas() {
+        return pessoas;
+    }
+
+    public double getGorjeta() {
+        return gorjeta;
+    }
+
     public Conta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void setTotal(double total) {
