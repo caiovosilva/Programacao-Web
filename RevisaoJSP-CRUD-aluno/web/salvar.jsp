@@ -32,7 +32,15 @@
             </table>
             <input type="submit" value="Salvar" name="acao">
         </form>
+        <br>
+        <jsp:useBean id="gerenciadorAluno" class="negocio.GerenciadorAluno" scope="session"/>
+        <jsp:setProperty name="gerenciadorAluno" property="*"/>
         
-        <
+        <h1>
+            <%
+                out.println(gerenciadorAluno.persistirAluno());
+            %>
+        </h1>
+            
     </body>
 </html>

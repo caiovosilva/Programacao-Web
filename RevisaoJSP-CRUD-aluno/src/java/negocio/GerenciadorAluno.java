@@ -17,6 +17,7 @@ public class GerenciadorAluno {
     
     public GerenciadorAluno(){
         alunoDAO = new AlunoDAODerby();
+        aluno = new Aluno();
     }
     
     public String getNome() {

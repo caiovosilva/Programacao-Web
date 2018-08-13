@@ -27,10 +27,10 @@ public class AlunoDAODerby implements IAlunoDAO{
         Statement st;
         try {
             st = conn.createStatement();
-            st.executeUpdate("insert into CAIO.ALUNO (nome, matricula, endereco) values ('"
+            st.executeUpdate("insert into caio.ALUNO (nome, matricula, endereco) values ('"
                     + aluno.getNome()+"', "
                     + aluno.getMatricula()+", '"
-                    + aluno.getEndereco()+"');");
+                    + aluno.getEndereco()+"')");
             result = "aluno cadastrado com sucesso!";
         } catch (SQLException ex) {
             Logger.getLogger(AlunoDAODerby.class.getName()).log(Level.SEVERE, null, ex);
