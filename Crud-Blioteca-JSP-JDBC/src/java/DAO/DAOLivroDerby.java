@@ -33,13 +33,6 @@ public class DAOLivroDerby implements DAOLivro{
         String resultado="";
         try {
             st = this.conn.createStatement();
-            String query = "insert into caio.LIVRO (autor, avaliacao, editora, isbn, paginas, titulo) "
-                + "values ('"+livro.getAutor()+"'," 
-                + ""+livro.getAvaliacao()+","
-                + "'"+livro.getEditora()+"',"
-                + "'"+livro.getIsbn()+"',"
-                + ""+livro.getPaginas()+","
-                + "'"+livro.getTitulo()+"')";
             st.executeUpdate("insert into caio.LIVRO (autor, avaliacao, editora, isbn, paginas, titulo) "
                 + "values ('"+livro.getAutor()+"'," 
                 + ""+livro.getAvaliacao()+","
