@@ -42,15 +42,15 @@ public class Game {
         this.numeroDigitado = numeroDigitado;
     }
 
-    public String getResultado() {
+    public int getResultado() {
 
         if (this.getNumeroDigitado() > this.getNumeroSorteado()) {
-            return "O número digitado é Maior que o número Sorteado";
+            return 1;
         } else if (this.getNumeroDigitado() < this.getNumeroSorteado()) {
-            return "O número digitado é Menor que o número Sorteado";
+            return -1;
         } else {
             this.sortear();
-            return "Parabens Você acertou";
+            return 0;
         }
     }
 

@@ -32,8 +32,14 @@ public class GameControllerBean implements Serializable {
     }
     
     public void chute(){
-        FacesContext context = FacesContext.getCurrentInstance();    
-        context.addMessage(null, new FacesMessage("Valor da Conta", getGame().getResultado()));
+        FacesContext context = FacesContext.getCurrentInstance();
+        int resultado = getGame().getResultado();
+        if(resultado>0)
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Valor da Conta", "O número digitado é Maior que o número Sorteado"));
+        else if(resultado<0)
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Valor da Conta", "O número digitado é Menor que o número Sorteado"));
+        else
+           context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Valor da Conta", "Parabens Você acertou"));
     }
     
     private Game game;
