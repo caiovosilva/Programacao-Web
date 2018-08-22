@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:dataGrid var="livro" value="#{bibliotecaManagedBean.allLivros}" columns="1"
+                        rows="12" paginator="true" id="livros"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="6,12,16">
+
+                <f:facet name="header">
+                    Livros
+                </f:facet>
+
+                <p:panel header="#{livro.titulo}" style="text-align:center">
+                    <h:panelGrid columns="1" style="width:100%">
+
+                        <h:outputText value="#{livro.autor}" />
+
+                        <p:commandLink update=":form:livroDetail" oncomplete="PF('livroDialog').show()" title="View Detail">
+                            <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                            <f:setPropertyActionListener value="#{livro}" target="#{bibliotecaManagedBean.selectedLivro}" />
+                        </p:commandLink>
+                    </h:panelGrid>
+                </p:panel>
+
+            </p:dataGrid>
+
+            <p:dialog header="Informações do Livro" widgetVar="livroDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="livroDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty bibliotecaManagedBean.selectedLivro}" columnClasses="label,value">
+                        <f:facet name="header">
+                            Id: #{bibliotecaManagedBean.selectedLivro.id}
+                        </f:facet>
+
+                        <h:outputText value="Título:" />
+                        <h:outputText value="#{bibliotecaManagedBean.selectedLivro.titulo}" />
+
+                        <h:outputText value="Autor" />
+                        <h:outputText value="#{bibliotecaManagedBean.selectedLivro.autor}" />
+
+                        <h:outputText value="Editora:" />
+                        <h:outputText value="#{bibliotecaManagedBean.selectedLivro.editora}" />
+
+                        <h:outputText value="Avaliacao" />
+                        <h:outputText value="#{bibliotecaManagedBean.selectedLivro.avaliacao}" />
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</html>
+

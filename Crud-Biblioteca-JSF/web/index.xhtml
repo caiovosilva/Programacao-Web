@@ -24,7 +24,8 @@
                 <h:outputLabel for="paginas" value="Páginas: "/>
                 <h:inputText id="paginas" value="#{bibliotecaManagedBean.biblioteca.paginas}" required="true"/><br></br><br></br>
                 
-                <p:commandButton value="Cadastrar" actionListener="#{bibliotecaManagedBean.cadastrar()}" update="msgGrowl" />
+                <p:commandButton value="Cadastrar" actionListener="#{bibliotecaManagedBean.cadastrar()}" update="msgGrowl" /><br></br>
+                <p:commandButton value="Buscar" actionListener="#{bibliotecaManagedBean.buscar()}" update="msgGrowl" />
             </p:panel>
             
         </h:form>

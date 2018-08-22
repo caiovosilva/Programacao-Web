@@ -1,0 +1,10 @@
+CREATE TABLE PASSAGEM (id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+nomePassageiro VARCHAR(255),
+cpf VARCHAR(11),
+dataNascimento VARCHAR(255),
+origem VARCHAR(255),
+partida timestamp,
+destino VARCHAR(255),
+chegada timestamp,
+valor double NOT NULL);
+ 
