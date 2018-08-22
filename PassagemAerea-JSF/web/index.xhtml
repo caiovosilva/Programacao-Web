@@ -8,25 +8,109 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <p:dataGrid var="passagem" value="#{passagensManagedBean.allPassagens}" id="passagens">
- 
-        <f:facet name="header">
-            Passagens Compradas
-        </f:facet>
- 
+
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true"/>
+
+            <p:dataTable id="passagens" var="passagem" value="#{passagensManagedBean.allPassagens}" editable="true" style="margin-bottom:20px">
+                <f:facet name="header">
+                    Passagens Compradas
+                </f:facet>
+
+                <p:ajax event="rowEdit" listener="#{passagensManagedBean.onRowEdit}" update=":form:msgs" />
+                <p:ajax event="rowEditCancel" listener="#{passagensManagedBean.onRowCancel}" update=":form:msgs" />
+
+                <p:column headerText="Id">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{passagem.id}" /></f:facet>
+                        <f:facet name="input"><p:inputText id="modelInput" value="#{passagem.id}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Passageiro">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{passagem.nomePassageiro}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{passagem.nomePassageiro}" style="width:100%" label="Year"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="CPF">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{passagem.cpf}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{passagem.cpf}" style="width:100%" label="Year"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Data de Nascimento">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{passagem.dataNascimento}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{passagem.dataNascimento}" style="width:100%" label="Year"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Origem">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{passagem.origem}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{passagem.origem}" style="width:100%" label="Year"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Partida">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{passagem.partida}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{passagem.partida}" style="width:100%" label="Year"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Destino">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{passagem.destino}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{passagem.destino}" style="width:100%" label="Year"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Chegada">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{passagem.chegada}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{passagem.chegada}" style="width:100%" label="Year"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Valor">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{passagem.valor}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{passagem.valor}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column style="width:32px">
+                    <p:rowEditor />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        
+        
+<!--        <p:dataGrid var="passagem" value="#{passagensManagedBean.allPassagens}" id="passagens">
+
+            <f:facet name="header">
+                Passagens Compradas
+            </f:facet>
+
+
+
         <p:panel header="#{passagem.nomePassageiro}" style="text-align:center">
-            <h:panelGrid columns="1" style="width:100%">
- 
-                <h:outputText value="#{passagem.valor}" />
- 
-<!--                <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
-                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
-                    <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" />
-                </p:commandLink>-->
-            </h:panelGrid>
-        </p:panel>
- 
-    </p:dataGrid>
+           <h:panelGrid columns="1" style="width:100%">
+
+               <h:outputText value="#{passagem.valor}" />
+
+               <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                   <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                   <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" />
+               </p:commandLink>
+           </h:panelGrid>
+       </p:panel>
+
+        </p:dataGrid>-->
     </h:body>
 </html>
 
