@@ -5,11 +5,35 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Passagens Aéreas</title>
     </h:head>
     <h:body>
+        <h:form>
+            <p:growl id="msgGrowl"  showDetail="true" sticky="false"/>  
 
-        <h:form id="form">
+            <p:panel header="Passagem">
+                <h:outputLabel for="passageiro" value="Passageiro: "/>
+                <h:inputText id="passageiro" value="#{passagensManagedBean.gerenciadorPassagem.nomePassageiro}"/><br></br>
+                <h:outputLabel for="cpf" value="CPF: "/>
+                <h:inputText id="cpf" value="#{passagensManagedBean.gerenciadorPassagem.cpf}"/><br></br>
+                <h:outputLabel for="dataNascimento" value="Data de Nascimento: "/>
+                <h:inputText id="dataNascimento" value="#{passagensManagedBean.gerenciadorPassagem.dataNascimento}"/><br></br>
+                <h:outputLabel for="origem" value="Origem: "/>
+                <h:inputText id="origem" value="#{passagensManagedBean.gerenciadorPassagem.origem}"/><br></br>
+                <p:outputLabel for="partida" value="Partida:" />
+                <p:calendar id="partida" value="#{passagensManagedBean.gerenciadorPassagem.partida}" pattern="MM/dd/yyyy HH:mm:ss" /><br></br>
+                <h:outputLabel for="destino" value="Destino: "/>
+                <h:inputText id="destino" value="#{passagensManagedBean.gerenciadorPassagem.destino}"/><br></br>
+                <p:outputLabel for="chegada" value="Chegada:" />
+                <p:calendar id="chegada" value="#{passagensManagedBean.gerenciadorPassagem.chegada}" pattern="MM/dd/yyyy HH:mm:ss" /><br></br>
+                <h:outputLabel for="valor" value="Valor: "/>
+                <h:inputText id="valor" value="#{passagensManagedBean.gerenciadorPassagem.valor}" converterMessage="Digite apenas números no campo 'Valor'!"/><br></br><br></br>
+                
+                <p:commandButton value="Cadastrar" actionListener="#{passagensManagedBean.cadastrar()}" update="msgGrowl" /><br></br>
+                <p:commandButton value="Buscar" actionListener="#{passagensManagedBean.buscar()}" update="passagens" />
+            </p:panel>
+            
+        <br></br><br></br><br></br><br></br>
             <p:growl id="msgs" showDetail="true"/>
 
             <p:dataTable id="passagens" var="passagem" value="#{passagensManagedBean.allPassagens}" editable="true" style="margin-bottom:20px">
@@ -19,13 +43,6 @@
 
                 <p:ajax event="rowEdit" listener="#{passagensManagedBean.onRowEdit}" update=":form:msgs" />
                 <p:ajax event="rowEditCancel" listener="#{passagensManagedBean.onRowCancel}" update=":form:msgs" />
-
-                <p:column headerText="Id">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{passagem.id}" /></f:facet>
-                        <f:facet name="input"><p:inputText id="modelInput" value="#{passagem.id}" style="width:100%"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
 
                 <p:column headerText="Passageiro">
                     <p:cellEditor>

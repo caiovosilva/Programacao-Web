@@ -18,6 +18,6 @@ public interface DAOPassagem {
     public List buscarPassagemsByNome(Passagem passagem);
     public List buscarTodosPassagems();
     public Passagem getPassagem(int id);
-    public String updatePassagem(Passagem passagem);
+    public boolean updatePassagem(Passagem passagem);
     public String deletePassagem(Passagem passagem);
 }

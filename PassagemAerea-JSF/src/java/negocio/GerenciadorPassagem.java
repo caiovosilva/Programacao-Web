@@ -30,7 +30,7 @@ public class GerenciadorPassagem {
         return this.dao.addPassagem(local);
     }
     
-    public String atualizarPassagem(){
+    public boolean atualizarPassagem(){
         return this.dao.updatePassagem(local);
     }
     

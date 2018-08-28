@@ -6,6 +6,7 @@
 package DAO;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -29,20 +30,23 @@ public class DAOPassagemDerby implements DAOPassagem{
 
     @Override
     public boolean addPassagem(Passagem passagem) {
-//        Statement st;
-//        try {
-//            st = this.conn.createStatement();
-//            st.executeUpdate("insert into caio.PASSAGEM (autor, avaliacao, editora, isbn, paginas, titulo) "
-//                + "values ('"+passagem.getAutor()+"'," 
-//                + ""+passagem.getAvaliacao()+","
-//                + "'"+passagem.getEditora()+"',"
-//                + "'"+passagem.getIsbn()+"',"
-//                + ""+passagem.getPaginas()+","
-//                + "'"+passagem.getTitulo()+"')");
-//            return true;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DAOPassagemDerby.class.getName()).log(Level.SEVERE, null, ex);          
-//        }
+        PreparedStatement pstm;
+        try {
+            pstm = this.conn.prepareStatement("insert into caio.PASSAGEM (nomePassageiro, cpf, dataNascimento, origem, partida, destino, chegada, valor) values (?,?,?,?,?,?,?,?)");
+            pstm.setString(1, passagem.getNomePassageiro());
+            pstm.setString(2, passagem.getCpf());
+            pstm.setString(3, passagem.getDataNascimento());
+            pstm.setString(4, passagem.getOrigem());
+            pstm.setTimestamp(5, passagem.getPartida());
+            pstm.setString(6, passagem.getDestino());
+            pstm.setTimestamp(7, passagem.getChegada());
+            pstm.setDouble(8, passagem.getValor());
+                
+            pstm.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOPassagemDerby.class.getName()).log(Level.SEVERE, null, ex);          
+        }
         return false;
     }
 
@@ -125,25 +129,25 @@ public class DAOPassagemDerby implements DAOPassagem{
     }
 
     @Override
-    public String updatePassagem(Passagem passagem) {
+    public boolean updatePassagem(Passagem passagem) {
         Statement st;
-        String resultado="";
-//        try {
-//            st = this.conn.createStatement();
-//            st.executeUpdate("update caio.PASSAGEM"
-//                    + " set autor = '"+passagem.getAutor()+"',"
-//                    + " avaliacao = "+passagem.getAvaliacao()+","
-//                    + " editora = '"+passagem.getEditora()+"',"
-//                    + " isbn = '"+passagem.getIsbn()+"',"
-//                    + " paginas = "+passagem.getPaginas()+","
-//                    + " titulo = '"+passagem.getTitulo()+"'"
-//                    + " where id = "+passagem.getId()+"");
-//            resultado="Passagem atualizado com sucesso";
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DAOPassagemDerby.class.getName()).log(Level.SEVERE, null, ex);
-//            resultado="Erro ao atualizar passagem";
-//        }
-        return resultado;
+        try {
+            st = this.conn.createStatement();
+            st.executeUpdate("update caio.PASSAGEM"
+                    + " set nomePassageiro = '"+passagem.getNomePassageiro()+"',"
+                    + " cpf = '"+passagem.getCpf()+"',"
+                    + " dataNascimento = '"+passagem.getDataNascimento()+"',"
+                    + " origem = '"+passagem.getOrigem()+"',"
+                    + " partida = '"+passagem.getPartida()+"',"
+                    + " destino = '"+passagem.getDestino()+"'"
+                    + " chegada = '"+passagem.getChegada()+"',"
+                    + " valor = "+passagem.getValor()+""
+                    + " where id = "+passagem.getId()+"");
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOPassagemDerby.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     @Override
