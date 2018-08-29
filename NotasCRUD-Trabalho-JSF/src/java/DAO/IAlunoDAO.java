@@ -17,6 +17,7 @@ public interface IAlunoDAO {
     public List getAllAlunos();
     public boolean updateAluno(Aluno aluno);
     public boolean removeAluno(Aluno aluno);
+    public List getAlunosByName(String name);
     public double mediaNota1();
     public double mediaNota2();
     public double mediaNota3();

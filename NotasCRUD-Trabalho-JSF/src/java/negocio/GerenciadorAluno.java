@@ -5,7 +5,7 @@
  */
 package negocio;
 
-import DAO.AlunoDAODerby;
+import DAO.DAOAlunoDerby;
 import DAO.IAlunoDAO;
 import java.util.List;
 import model.Aluno;
@@ -17,7 +17,7 @@ import model.Aluno;
 public class GerenciadorAluno {
     
     public GerenciadorAluno(){
-        alunoDAO = new AlunoDAODerby();
+        alunoDAO = new DAOAlunoDerby();
         aluno = new Aluno();
     }
     
@@ -106,6 +106,11 @@ public class GerenciadorAluno {
     public double mediaNota3(){
         return alunoDAO.mediaNota3();
     }
+    
+    public List buscarAlunoPorNome(){
+        return alunoDAO.getAlunosByName(getNome());
+    }
+    
     private IAlunoDAO alunoDAO;
     private Aluno aluno;
 }

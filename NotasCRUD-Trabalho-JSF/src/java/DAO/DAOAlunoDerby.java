@@ -19,9 +19,9 @@ import model.Aluno;
  *
  * @author caiovosilva
  */
-public class AlunoDAODerby implements IAlunoDAO{
+public class DAOAlunoDerby implements IAlunoDAO{
 
-    public AlunoDAODerby(){
+    public DAOAlunoDerby(){
         conn = ConexaoDerby.getInstance().getConnection();
     }
     @Override
@@ -38,7 +38,7 @@ public class AlunoDAODerby implements IAlunoDAO{
                     + aluno.getNota3()+")");
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(AlunoDAODerby.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOAlunoDerby.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -65,7 +65,7 @@ public class AlunoDAODerby implements IAlunoDAO{
                 lista.add(l);
             }          
         } catch (SQLException ex) {
-            Logger.getLogger(AlunoDAODerby.class.getName()).log(Level.SEVERE, null, ex);           
+            Logger.getLogger(DAOAlunoDerby.class.getName()).log(Level.SEVERE, null, ex);           
         }
         return lista;
     }
@@ -117,7 +117,7 @@ public class AlunoDAODerby implements IAlunoDAO{
             }
             return media / count;
         } catch (SQLException ex) {
-            Logger.getLogger(AlunoDAODerby.class.getName()).log(Level.SEVERE, null, ex);           
+            Logger.getLogger(DAOAlunoDerby.class.getName()).log(Level.SEVERE, null, ex);           
         }
         return 0;
     }
@@ -136,7 +136,7 @@ public class AlunoDAODerby implements IAlunoDAO{
             }
             return media / count;
         } catch (SQLException ex) {
-            Logger.getLogger(AlunoDAODerby.class.getName()).log(Level.SEVERE, null, ex);           
+            Logger.getLogger(DAOAlunoDerby.class.getName()).log(Level.SEVERE, null, ex);           
         }
         return 0;
     }
@@ -155,8 +155,32 @@ public class AlunoDAODerby implements IAlunoDAO{
             }
             return media / count;
         } catch (SQLException ex) {
-            Logger.getLogger(AlunoDAODerby.class.getName()).log(Level.SEVERE, null, ex);           
+            Logger.getLogger(DAOAlunoDerby.class.getName()).log(Level.SEVERE, null, ex);           
         }
         return 0;
+    }
+
+    @Override
+    public List getAlunosByName(String name) {
+        ArrayList<Aluno> lista=new ArrayList<Aluno>();
+        Statement st;     
+        try {
+            st = this.conn.createStatement();
+            ResultSet rs = st.executeQuery("Select * from caio.ALUNO where nome like '%"+name+"%'");
+            while(rs.next()){
+                Aluno l= new Aluno();
+                l.setNome(rs.getString("nome"));
+                l.setMatricula(Integer.parseInt(rs.getString("matricula")));
+                l.setEndereco(rs.getString("endereco"));
+                l.setNota1(Double.parseDouble(rs.getString("nota1")));
+                l.setNota2(Double.parseDouble(rs.getString("nota2")));
+                l.setNota3(Double.parseDouble(rs.getString("nota3")));
+                l.setId(Integer.parseInt(rs.getString("id")));
+                lista.add(l);
+            }          
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOAlunoDerby.class.getName()).log(Level.SEVERE, null, ex);           
+        }
+        return lista;
     }
 }

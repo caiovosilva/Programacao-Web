@@ -88,6 +88,11 @@ public class AlunosManagedBean implements Serializable{
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Persistência", "Aluno cadastrado com sucesso!"));
         else
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Persistência", "ERRO ao cadastrar aluno!"));
+        atualizar();
+    }
+    
+    public void buscarPorNome(){
+        listaAlunos = gerenciadorAluno.buscarAlunoPorNome();
     }
     
     public void remove(Aluno aluno) {

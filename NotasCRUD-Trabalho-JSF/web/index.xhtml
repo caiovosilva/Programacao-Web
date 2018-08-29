@@ -25,8 +25,8 @@
                 <h:outputLabel for="nota3" value="Nota 3: "/>
                 <h:inputText id="nota3" value="#{alunosManagedBean.gerenciadorAluno.nota3}"/><br></br><br></br>
 
-                <p:commandButton value="Cadastrar" actionListener="#{alunosManagedBean.cadastrar()}" update="msgGrowl" /><br></br>
-                <p:commandButton value="Atualizar Lista" actionListener="#{alunosManagedBean.atualizar()}" update="alunos" />
+                <p:commandButton value="Cadastrar" actionListener="#{alunosManagedBean.cadastrar()}" update="msgGrowl, alunos" /><br></br>
+                <p:commandButton value="Buscar por nome" actionListener="#{alunosManagedBean.buscarPorNome()}" update="alunos" />
             </p:panel>
 
             <br></br><br></br><br></br>
