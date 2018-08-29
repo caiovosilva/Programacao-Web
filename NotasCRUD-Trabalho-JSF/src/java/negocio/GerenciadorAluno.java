@@ -70,13 +70,42 @@ public class GerenciadorAluno {
     }
     
     public boolean persistirAluno(){
-        return alunoDAO.PersistirAluno(aluno);
+        return alunoDAO.persistirAluno(aluno);
     }
     
     public List getAllAlunos(){
         return alunoDAO.getAllAlunos();
     }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
     
+    public boolean updateAluno(Aluno aluno){
+        this.aluno = aluno;
+        return alunoDAO.updateAluno(this.aluno);
+    }
+    
+    public boolean removeAluno(Aluno aluno){
+        this.aluno = aluno;
+        return alunoDAO.removeAluno(this.aluno);
+    }
+    
+    public double mediaNota1(){
+        return alunoDAO.mediaNota1();
+    }
+    
+    public double mediaNota2(){
+        return alunoDAO.mediaNota2();
+    }
+    
+    public double mediaNota3(){
+        return alunoDAO.mediaNota3();
+    }
     private IAlunoDAO alunoDAO;
     private Aluno aluno;
 }

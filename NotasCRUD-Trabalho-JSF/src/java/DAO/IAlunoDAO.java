@@ -13,6 +13,11 @@ import model.Aluno;
  * @author caiovosilva
  */
 public interface IAlunoDAO {
-    public boolean PersistirAluno(Aluno aluno);
+    public boolean persistirAluno(Aluno aluno);
     public List getAllAlunos();
+    public boolean updateAluno(Aluno aluno);
+    public boolean removeAluno(Aluno aluno);
+    public double mediaNota1();
+    public double mediaNota2();
+    public double mediaNota3();
 }

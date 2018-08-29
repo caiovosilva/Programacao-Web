@@ -5,10 +5,10 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Sistema Acadêmico</title>
     </h:head>
-    <h:body>
-       <h:form>
+    <h:body>        
+        <h:form id="form">
             <p:growl id="msgGrowl"  showDetail="true" sticky="false"/>  
 
             <p:panel header="Aluno">
@@ -24,17 +24,18 @@
                 <h:inputText id="nota2" value="#{alunosManagedBean.gerenciadorAluno.nota2}"/><br></br>
                 <h:outputLabel for="nota3" value="Nota 3: "/>
                 <h:inputText id="nota3" value="#{alunosManagedBean.gerenciadorAluno.nota3}"/><br></br><br></br>
-                
+
                 <p:commandButton value="Cadastrar" actionListener="#{alunosManagedBean.cadastrar()}" update="msgGrowl" /><br></br>
-                <p:commandButton value="Buscar" actionListener="#{alunosManagedBean.buscar()}" update="alunos" />
+                <p:commandButton value="Atualizar Lista" actionListener="#{alunosManagedBean.atualizar()}" update="alunos" />
             </p:panel>
-            
+
             <br></br><br></br><br></br>
+
             <p:growl id="msgs" showDetail="true"/>
 
-            <p:dataTable id="alunos" var="aluno" value="#{alunosManagedBean.allAlunos}" editable="true" style="margin-bottom:20px">
+            <p:dataTable id="alunos" var="aluno" value="#{alunosManagedBean.alunos}" editable="true" style="margin-bottom:20px">
                 <f:facet name="header">
-                    Alunos
+                    ALUNOS
                 </f:facet>
 
                 <p:ajax event="rowEdit" listener="#{alunosManagedBean.onRowEdit}" update=":form:msgs" />
@@ -53,28 +54,28 @@
                         <f:facet name="input"><p:inputText value="#{aluno.endereco}" style="width:100%" label="Year"/></f:facet>
                     </p:cellEditor>
                 </p:column>
-                
+
                 <p:column headerText="Matrícula">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{aluno.matricula}" /></f:facet>
                         <f:facet name="input"><p:inputText value="#{aluno.matricula}" style="width:100%" label="Year"/></f:facet>
                     </p:cellEditor>
                 </p:column>
-                
+
                 <p:column headerText="Nota 1">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{aluno.nota1}" /></f:facet>
                         <f:facet name="input"><p:inputText value="#{aluno.nota1}" style="width:100%" label="Year"/></f:facet>
                     </p:cellEditor>
                 </p:column>
-                
+
                 <p:column headerText="Nota 2">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{aluno.nota2}" /></f:facet>
                         <f:facet name="input"><p:inputText value="#{aluno.nota2}" style="width:100%" label="Year"/></f:facet>
                     </p:cellEditor>
                 </p:column>
-                
+
                 <p:column headerText="Nota 3">
                     <p:cellEditor>
                         <f:facet name="output"><h:outputText value="#{aluno.nota3}" /></f:facet>
@@ -84,8 +85,17 @@
                 <p:column style="width:32px">
                     <p:rowEditor />
                 </p:column>
+                <p:column style="width:32px">
+                    <p:commandButton icon="ui-icon-trash"
+                        title="Delete"
+                        actionListener="#{alunosManagedBean.remove(aluno)}"
+                        ajax="false" />
+                </p:column>
             </p:dataTable>
         </h:form>
+        
+        <br></br><br></br><br></br>
+        <p:chart type="bar" model="#{alunosManagedBean.barModel}" style="width:500px;height: 600px"/>
     </h:body>
 </html>
 
