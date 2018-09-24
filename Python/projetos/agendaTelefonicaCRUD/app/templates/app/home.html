@@ -5,12 +5,30 @@
     <style></style>
   </head>
   <body>
-    <form action="CRUDController" method="POST">
+    <table style="width:30%">
+        <tr>
+            <td>NOME:</td>
+            <td><input type="text" name="nome"/></td>
+        </tr>
+        <tr>
+            <td>CPF:</td>
+            <td><input type="text" name="cpf"/></td>
+        </tr>
+        <tr>
+            <td>TEL:</td>
+            <td><input type="text" name="tel"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="ADD" name="bt"/></td>
+            <td><a href="list"><input type="submit" value="BUSCAR" name="bt"/></a></td>
+        </tr>
+    </table>
+    <!--<form action="CRUDController" method="POST">
         NOME: <input type="text" name="nome"/><br>
         CPF : <input type="text" name="cpf"/><br>
         TEL : <input type="text" name="tel"/><br>
         <input type="submit" value="ADD" name="bt"/>
         <input type="submit" value="BUSCAR" name="bt"/>
-    </form>
+    </form>-->
   </body>
 </html>

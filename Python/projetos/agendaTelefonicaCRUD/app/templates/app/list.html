@@ -1,0 +1,11 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    {% for pessoa in pessoas %}
+        <div class="pessoa">
+            <h2><a href="{% url 'pessoa_detail' pk=pessoa.pk %}">{{ pessoa.nome }}</a></h2>
+            <p>Telefone: {{ pessoa.tel }}</p>
+            <p>Celular: {{ pessoa.cel }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
